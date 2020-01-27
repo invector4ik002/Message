@@ -20,7 +20,7 @@ export const Chat = ({ messages, message, name, onSendMessage }) =>
     /> 
 </div>);
 
-ChatForm.propTypes = {
+Chat.propTypes = {
     messages: PropTypes.arrayOf(PropTypes.shape(Message.propTypes)),
     message: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,

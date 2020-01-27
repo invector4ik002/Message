@@ -14,12 +14,21 @@ export class ChatForm extends Component {
     textarea = React.createRef();
     componentDidMount() {
         this.textarea.current.focus();
-    }
+    };
+    /**
+     * @param {string}
+     */
     hendleInput = ({currentTarget: {value, name}}) => {
         this.setState(()=>({[name]: value}))
         console.log(value);
         console.log(name);
     }
+    
+    handleClick = () => {
+        const { name, content } = this.state
+        this.props.onSendMessage( {name, content} )
+    }
+    
     render() {
         const { placeholderName, placeholderMessage } = this.props
         return(
@@ -38,10 +47,11 @@ export class ChatForm extends Component {
                     ref={this.textarea}
                     value={this.state.content} 
                 />
-                <button>Отправить</button>
+                <button onClick={this.handleClick}>Отправить</button>
             </div> 
         )
     }
+
 }
 // export const ChatForm = ({ message, name, onSendMessage }) => 
 // (<div>
@@ -53,5 +63,5 @@ export class ChatForm extends Component {
 ChatForm.propTypes = {
     message: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    onSendMessage: PropTypes.func.isRequired
+    onSendMessage: PropTypes.func.isRequired,
 }
