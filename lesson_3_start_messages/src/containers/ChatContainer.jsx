@@ -11,21 +11,21 @@ export class ChatContainer extends Component {
             { name: "Ivan", content: "I am well" },
         ]
     }
-    componentDidMount() {
+    componentDidUpdate() {
         const {messages} = this.state;
-        const lastMassage = messages[messages.length -1];
-        if(lastMassage.name == ROBOT_NAME) {
-            console.log("Robot is not out")
-        } else {
-            setTimeout(() => this.handleSendMessage({ name: ROBOT_NAME, content: 'Hi im Robot' }), 2000)
+        const lastMessage = messages[messages.length -1];
+        if(lastMessage.name !== ROBOT_NAME) {
+            // console.log("Robot is not out")
+            setTimeout(() => this.handleSendMessage({ name: ROBOT_NAME, content: 'Hi im Robot' }), 2000);
         }
-    }
+        // else {
+        // }
+    };
     handleSendMessage = (message) => {
         this.setState((state) => ({messages: [...state.messages, message]}))
-    }
+    };
     render() {
         const { messages } = this.state;
         return <Chat {...{ messages, onSendMessage: this.handleSendMessage}}/>
-    }
+    };
 };
-compo
