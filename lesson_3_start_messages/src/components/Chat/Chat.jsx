@@ -1,7 +1,9 @@
+import './Chat.css'
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MessageFieled } from '../MessageFieled/MessageFieled';
+import { MessageField } from '../MessageField/MessageField';
 import { Message } from '../Message/Message';
 import { ChatForm } from '../ChatForm/ChatForm';
 /**
@@ -12,8 +14,8 @@ import { ChatForm } from '../ChatForm/ChatForm';
  * @param {Function} onSendMessage Обработчик отправки нового сообщения 
  */
 export const Chat = ({ messages, message, name, onSendMessage }) => 
-(<div>
-    <MessageFieled messages={messages}/>
+(<div className="wrapper--container">
+    <MessageField messages={messages}/>
     <ChatForm {...{message, name, onSendMessage}} 
     placeholderName="User"
     placeholderMessage="my Message"

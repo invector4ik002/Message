@@ -1,3 +1,6 @@
+import './ChatForm.css'
+
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 /**
@@ -32,8 +35,9 @@ export class ChatForm extends Component {
     render() {
         const { placeholderName, placeholderMessage } = this.props
         return(
-            <div>
+            <div className="ChatForm">
                 <input 
+                    className="ChatForm-input"
                     name="name"
                     onChange={this.hendleInput}
                     placeholder={placeholderName}
@@ -41,13 +45,17 @@ export class ChatForm extends Component {
                     value={this.state.name} 
                 />
                 <textarea 
+                    className="ChatForm-input ChatForm-textarea"
                     name="content"
                     onChange={this.hendleInput}
                     placeholder={placeholderMessage}
                     ref={this.textarea}
                     value={this.state.content} 
                 />
-                <button onClick={this.handleClick}>Отправить</button>
+                <button 
+                    className="button"
+                    onClick={this.handleClick}
+                >Отправить</button>
             </div> 
         )
     }
