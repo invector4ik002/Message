@@ -3,13 +3,13 @@
  * Единственный в Redux кто может работать со Store это Reducer.
  */
 import { handleActions } from 'redux-actions';
-import { loadChats,addMessage } from './chatAction';
+import { loadChats, addMessage } from './chatAction';
 /**
  * object defaultState первоначальное значения Store этого редьюсера "chatReducer"
  */
 const defaultState = {
-    chats:{}
-};
+    chats: {},
+}
 /**
  * @function возвращает обьект
  * ключи обьекта экшены
@@ -19,7 +19,7 @@ export default handleActions({
      * переменная [loadChats] - [] способ получения данных из переменной(наша переменная логическая)
      * и запись этих данных в св-в этого обьекта
      */
-    [ loadChats ]: (state) => {
+    [loadChats]: (state) => {
         return {
            ...state,// диструктизирует state
             chats:{
@@ -50,7 +50,7 @@ export default handleActions({
     /**
      * [addMessage] Action при сробатывании этого эктива создается новый Store
      */
-    [ addMessage ]: (state, {payload: {id, name, content}}) => {
+    [addMessage]: (state, {payload: {id, name, content}}) => {
         return {
             ...state,//предыдущее состояние
             chats: {//обьект chats

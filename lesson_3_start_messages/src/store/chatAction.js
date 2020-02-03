@@ -22,4 +22,4 @@ export const { loadChats, addMessage } = createActions({
             content
         }
     ),
-});
+})

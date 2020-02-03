@@ -5,7 +5,7 @@ import {loadChats, addMessage} from '../store/chatAction'
 
 import { Chat } from '../components/Chat/Chat'
 
-const ROBOT_NAME = 'Robot';
+// const ROBOT_NAME = 'Robot';
 class ChatContainer extends Component {
     state = {
         chats: {
@@ -53,7 +53,9 @@ class ChatContainer extends Component {
     /**
      *  
      */
-    // handleSendMessage = (id) => (message) => {
+    handleSendMessage = (id) => (message) => {
+       this.props.addMessage(id, message.name, message.content)
+    }
     //     this.setState((state) => ({ 
     //         chats: {
     //             ...state.chats,
@@ -68,22 +70,26 @@ class ChatContainer extends Component {
     // };
 
     render() {   
-        return null;                                                                                                                                                                                  
-        // const { chats } = this.state;
+        // return null;                                                                                                                                                                                  
+        const { messages } = this.props;
         // const {id} = this.props.match.params;
-        // if(id && chats[id]) {
-        //     return <Chat { ...{chats: chats, messages: chats[id].messages, onSendMessage: this.handleSendMessage(id) }}/>
-        // } else {
-        //     return <span>Вы не выбрали чат</span>
-        // };
+        if(messages) {
+            return <Chat { ...{ messages: chats[id].messages, onSendMessage: this.handleSendMessage(id) }}/>
+        } else {
+            return <span>Вы не выбрали чат</span>
+        };
     };
 };
 /**
  * @param {chatReducer} 
  */
-const mapStateToProps = ({ chatReducer }) => ({
-    chats: chatReducer.chats,
-})
+const mapStateToProps = ({ chatReducer }, {match}) => { 
+    const id = match.params.id;  
+    return {
+        messages: id ? chatReducer.chats[id] ? chatReducer.chats[id].messages : null : null,
+        id
+    } 
+};
 /**
  * 
  * @param {dispatch} function передает Action в Reducer
