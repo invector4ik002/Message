@@ -84,6 +84,7 @@ class ChatContainer extends Component {
  * @param {chatReducer} 
  */
 const mapStateToProps = ({ chatReducer }, {match}) => { 
+    
     const id = match.params.id;  
     return {
         messages: id ? chatReducer.chats[id] ? chatReducer.chats[id].messages : null : null,

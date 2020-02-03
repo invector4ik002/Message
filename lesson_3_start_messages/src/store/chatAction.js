@@ -2,7 +2,7 @@
  * Оприделение: Компонент Action - (экшен) содержит описание какие нужно внести изменения в Store.
  * Следующий этап перехода до Store перход в dispatch() и перход в Reducer
  */
-import { createActions } from 'redux-action';
+import { createActions } from 'redux-actions';
 /**
  * @function принемает обьект 
  * экспортирует с диструктизацией
