@@ -1,33 +1,54 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Provider } from 'react-redux';//Provider ко-т React для обертки приложения в Store
-
-// import { ChatList } from './components/ChatList/ChatList'
+import React, {Component} from 'react';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+/**
+ * подключаем Redux к React
+ * Делает хранилище Redux доступным для вызовов connect ()() в иерархии компонентов ниже.
+ */
+import {Provider} from 'react-redux';
+/**
+ * Интеграции роутинга в Redux
+ * @function [<ConnectedRoute>] - специальная фунуция "промежуточный маршрутизатор"
+ */
+import {ConnectedRouter} from 'connected-react-router';
+//---------------------------------------------------------------------------------------------------------------------
+//подключаем store.js(function initStore) к React.
 import ChatContainer from './containers/ChatContainer';
-import { initStore } from './store/store';//импорт Store и функции из нее дабы передать пропсом 
+import ChatListContainer from './containers/ChatListContainer';
+/**
+ * @function [<history>] export const history = createBrowserHistory();
+ */
+import {initStore, history} from './store/store';
+import {loadChats} from './store/chatAction';
 
 const store = initStore();
-export class App extends Component {  
-  render() {
-    return (
-      <Provider store={store}>
-        <BrowserRouter>
-        {/* <ChatList/> */}
-        <Switch>
-          <Route path="/chats/" exact component={ChatContainer} />
-          <Route path="/chats/:id" exact component={ChatContainer} />
-          <Route path="/about">
-            it's about
-          </Route>
-          <Route path="/home">
-            it's home
-          </Route>
-          <Route path="/">
-            it's index
-          </Route>
-        </Switch>
-      </BrowserRouter>
-      </Provider>
-    )
-  }
+store.dispatch(loadChats());
+/**
+ * @component {class} App - собираем все тут :)
+ * @component {Component-dull} [<ChatList/>]
+ * @component {Component-dull} [<ChatContainer/>] - пока такой но перепишем
+ * @component {react-router-dom} [<BrowserRouter>]
+ * @component {react-router-dom} [<Switch>]
+ * @component {react-router-dom} [<Route>] атрибуты: [path=''] - пишем имя пути, пример: '/chats/'.[exact] - запустк всегда этого пути первым. [component={ChatContainer}] - помпактная запись компонента который подбрасываем(грузим первым)
+ * @component {'react-redux} [<Provider>] атрибут: [store={}]
+ */
+ export class App extends Component {  
+    render() {
+        return (
+            <Provider store={store}>
+                <ConnectedRouter history={history}>
+                {/* <BrowserRouter> при подключении 'connected-react-router' заменяем на <ConnectedRouter/>*/}
+                   <ChatListContainer/>
+                   {/* <ChatList/> */}
+                   <Switch>
+                        <Route path='/chats/' exact component={ChatContainer}/>
+                        <Route path='/chats/:id' exact component={ChatContainer}/>
+                        {/* <Route path='/chats/' exact><ChatContainer/></Route> - другой вариант записи*/}
+                        <Route path='/about'>'/about'-work</Route>                      
+                        <Route path='/home'>'/home'-work</Route>                      
+                        <Route path='/'>' / 'нет такого пути 404 </Route>                      
+                   </Switch>
+                   </ConnectedRouter>  
+            </Provider>   
+        )
+    }
 }
