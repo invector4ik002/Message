@@ -1,3 +1,5 @@
+// import '/App.css';
+
 import React, {Component} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 /**
@@ -37,6 +39,7 @@ store.dispatch(loadChats());
             <Provider store={store}>
                 <ConnectedRouter history={history}>
                 {/* <BrowserRouter> при подключении 'connected-react-router' заменяем на <ConnectedRouter/>*/}
+                <div className='container'>
                    <ChatListContainer/>
                    {/* <ChatList/> */}
                    <Switch>
@@ -47,8 +50,9 @@ store.dispatch(loadChats());
                         <Route path='/home'>'/home'-work</Route>                      
                         <Route path='/'>' / 'нет такого пути 404 </Route>                      
                    </Switch>
+                 </div>   
                    </ConnectedRouter>  
-            </Provider>   
+            </Provider>  
         )
     }
 }

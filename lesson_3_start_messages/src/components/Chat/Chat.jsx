@@ -13,7 +13,7 @@ import { ChatForm } from '../ChatForm/ChatForm';
  */
 export const Chat = ({ messages, message, name, onSendMessage }) => {
     if(messages) {
-        return (
+    return (
         <div>
             <MessageField messages={messages}/>
             <ChatForm onSendMessage={onSendMessage}/>
