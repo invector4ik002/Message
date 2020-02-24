@@ -17,7 +17,7 @@ import {Link} from 'react-router-dom';
  * ChatList({chats})
  * //=> <li key={id}><Link to={'/chats/'+id}>{name}</Link></li>
  */
-export const ChatList = ({chats, addChat}) =>{
+export const ChatList = ({chats, addChat}) => {
 const [chatName, setChatName] = useState('');
 return (
     <div className='MessageField'>
@@ -39,4 +39,4 @@ return (
 //https://ru.reactjs.org/docs/typechecking-with-proptypes.html
 // MessageField.propTypes = {
 //     messages: PropTypes.arrayOf(PropTypes.shape(Message.propTypes))
-// };
+// };chatReducer.chats[id].messages[{name}]

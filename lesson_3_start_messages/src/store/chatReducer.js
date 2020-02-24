@@ -7,7 +7,7 @@ import {handleActions} from 'redux-actions';
  * @function [<loadChats>] - LOAD_CHATS: () => ({}), 
  * @function [<addMessage>] - ADD_MESSAGE: (id, name, content) => ({id, name, content}), 
  */
-import {chatsRequest, chatsSuccess, addChat, addMessage, fire, unfire, } from './chatAction';
+import {chatsRequest, chatsSuccess, addChat, addMessage, fire, unfire, usersList} from './chatAction';
 // состояние по умолчанию.
 const defaultState = {
     chats: {},
@@ -102,4 +102,19 @@ export default handleActions({
             }
         }
     },
+    [usersList]: (state,{payload: {id, name, content}}) => {
+        return {
+            ...state,
+            chats: {
+                ...state.chats,
+                [id]: {
+                    name: state.chats[id].name,
+                    messages: [
+                        ...state.chats[id].messages,
+                        {name, content},
+                    ]
+                }  
+            }
+        }
+    }  
 }, defaultState);

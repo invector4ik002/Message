@@ -11,7 +11,8 @@ import { ChatForm } from '../ChatForm/ChatForm';
  * @param {string} message - сообщение пользователя.
  * @param {string} messages - сообщение пользователя.
  */
-export const Chat = ({ messages, message, name, onSendMessage }) => {
+export const Chat = ({ messages, onSendMessage }) => {
+    console.log(messages)
     if(messages) {
         return (
         <div>
@@ -26,7 +27,7 @@ export const Chat = ({ messages, message, name, onSendMessage }) => {
 //https://ru.reactjs.org/docs/typechecking-with-proptypes.html
 ChatForm.propTypes = {
     messages: PropTypes.arrayOf(PropTypes.shape(Message.propTypes)),
-    message: PropTypes.string.isRequired,
+    // message: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     onSendMessage: PropTypes.func.isRequired
 };

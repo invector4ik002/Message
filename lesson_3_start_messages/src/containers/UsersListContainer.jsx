@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import {addChat} from '../store/chatAction';
-import {ChatList} from '../components/ChatList/ChatList'
+import {usersList} from '../store/chatAction';
+import {UsersList} from '../components/UsersList/UsersList'
 /**
  * Специальная функция для получения из стора того что будем менять
  * возвращает нужную стркутуру обьекта {id, name}
@@ -12,16 +12,9 @@ import {ChatList} from '../components/ChatList/ChatList'
  * mapStateToProps(store)
  * //=>{id, name}
  */
-const mapStateToProps = (store) => {
-    // console.log(store)
-    const chats = Object.keys(store.chatReducer.chats).map((id) => (
-    {
-        id, 
-        name: store.chatReducer.chats[id].name,
-        unread: store.chatReducer.chats[id].unread,
-    }));
+const mapStateToProps = ({}) => {
     return {
-       chats
+
     }
 }
 /**
@@ -29,8 +22,7 @@ const mapStateToProps = (store) => {
  * @param {function} dispatch - отправитель actions
  */
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({addChat}, dispatch)
+    return bindActionCreators({usersList}, dispatch);
 }
-// const margeProps = () => {
-// }
-export default connect(mapStateToProps, mapDispatchToProps)(ChatList);
+
+export default connect(mapStateToProps, mapDispatchToProps)(UsersList);

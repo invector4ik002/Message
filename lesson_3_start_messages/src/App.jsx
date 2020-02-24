@@ -1,3 +1,5 @@
+import './App.css';
+
 import React, {Component} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 /**
@@ -19,6 +21,7 @@ import ChatListContainer from './containers/ChatListContainer';
  */
 import {initStore, history} from './store/store';
 import {loadChats} from './store/chatAction';
+import {UsersList} from './components/UsersList/UsersList'
 
 const store = initStore();
 store.dispatch(loadChats());
@@ -34,6 +37,7 @@ store.dispatch(loadChats());
  export class App extends Component {  
     render() {
         return (
+            <div className='container'>
             <Provider store={store}>
                 <ConnectedRouter history={history}>
                 {/* <BrowserRouter> при подключении 'connected-react-router' заменяем на <ConnectedRouter/>*/}
@@ -47,8 +51,10 @@ store.dispatch(loadChats());
                         <Route path='/home'>'/home'-work</Route>                      
                         <Route path='/'>' / 'нет такого пути 404 </Route>                      
                    </Switch>
+                   <UsersList/>
                    </ConnectedRouter>  
-            </Provider>   
+            </Provider> 
+          </div>    
         )
     }
 }

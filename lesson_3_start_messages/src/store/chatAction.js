@@ -10,7 +10,7 @@ import {createActions} from 'redux-actions';
  */
 // import {createAction} from 'redux-api-middleware';
 
-export const {addChat, addMessage, fire, unfire, chatsRequest, chatsSuccess, chatsFailure} = createActions({
+export const {addChat, addMessage, fire, unfire, chatsRequest, chatsSuccess, chatsFailure, usersList} = createActions({
     /**
      * Экшен иметирующий загрузку с сервера state приложения.
      *@function [<LOAD_CHATS:>] 
@@ -55,6 +55,10 @@ export const {addChat, addMessage, fire, unfire, chatsRequest, chatsSuccess, cha
      * 
      */
     CHATS_FAILURE: (error) => (error),
+    /**
+     * 
+     */
+    USERS_LIST: (id, name) => ({id, name, content}),
 });
 // 1.0 Вариант для работе с серверном при помощи библиотеки 'redux-api-middleware'
 // actions для работы с сервером.
