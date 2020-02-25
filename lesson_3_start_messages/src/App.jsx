@@ -21,7 +21,7 @@ import ChatListContainer from './containers/ChatListContainer';
  */
 import {initStore, history} from './store/store';
 import {loadChats} from './store/chatAction';
-import {UsersList} from './components/UsersList/UsersList'
+import UsersListContainer from './containers/UsersListContainer'
 
 const store = initStore();
 store.dispatch(loadChats());
@@ -51,7 +51,7 @@ store.dispatch(loadChats());
                         <Route path='/home'>'/home'-work</Route>                      
                         <Route path='/'>' / 'нет такого пути 404 </Route>                      
                    </Switch>
-                   <UsersList/>
+                   <UsersListContainer/>
                    </ConnectedRouter>  
             </Provider> 
           </div>    

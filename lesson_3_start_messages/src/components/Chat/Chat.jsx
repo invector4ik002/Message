@@ -12,7 +12,7 @@ import { ChatForm } from '../ChatForm/ChatForm';
  * @param {string} messages - сообщение пользователя.
  */
 export const Chat = ({ messages, onSendMessage }) => {
-    console.log(messages)
+    // console.log(messages)
     if(messages) {
         return (
         <div>

@@ -3,9 +3,13 @@ import React from 'react';
 import {User} from '../User/User'
 
 export const UsersList = ({}) => 
-        (<div className='userContainer'>
-            {/* {messages.map((message, index) => <User {...message} key={index}/>)} */}
-        </div>);
+// console.log(state)
+
+  (<div className='userContainer'>
+            {/* {this.props.User} */}
+        </div>)
+
+      
     
 
 // console.log(messages)

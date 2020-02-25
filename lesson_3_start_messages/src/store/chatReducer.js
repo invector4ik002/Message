@@ -102,19 +102,19 @@ export default handleActions({
             }
         }
     },
-    [usersList]: (state,{payload: {id, name, content}}) => {
-        return {
-            ...state,
-            chats: {
-                ...state.chats,
-                [id]: {
-                    name: state.chats[id].name,
-                    messages: [
-                        ...state.chats[id].messages,
-                        {name, content},
-                    ]
-                }  
-            }
-        }
-    }  
+    // [usersList]: (state,{payload: {id, name, content}}) => {
+    //     return {
+    //         ...state,
+    //         chats: {
+    //             ...state.chats,
+    //             [id]: {
+    //                 name: state.chats[id].name,
+    //                 messages: [
+    //                     ...state.chats[id].messages,
+    //                     {name, content},
+    //                 ]
+    //             }  
+    //         }
+    //     }
+    // }  
 }, defaultState);
